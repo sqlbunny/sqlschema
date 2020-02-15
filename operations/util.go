@@ -3,6 +3,7 @@ package operations
 import (
 	"bytes"
 	"fmt"
+	"github.com/sqlbunny/sqlschema/schema"
 )
 
 func sqlName(schema, name string) string {
@@ -34,4 +35,15 @@ func columnList(columns []string) string {
 		buf.WriteString("\"")
 	}
 	return buf.String()
+}
+
+func indexType(t schema.IndexType) string {
+	switch t {
+	case schema.DefaultIndex:
+		return ""
+	case schema.GISTIndex:
+		return "USING GIST"
+	default:
+		return ""
+	}
 }

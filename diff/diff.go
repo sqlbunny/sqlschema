@@ -267,6 +267,7 @@ func diffCreateIndexes(ops []operations.Operation, d1, d2 *schema.Database) []op
 						SchemaName: schemaName,
 						TableName:  tableName,
 						IndexName:  name,
+						Type:       i2.Type,
 						Columns:    i2.Columns,
 					})
 				}
